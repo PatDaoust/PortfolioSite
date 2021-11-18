@@ -12,8 +12,11 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython.min.js"> </script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython_stdlib.min.js"> </script>
+    	<script src="main.py" type="text/python" defer></script>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" onload="brython()">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -42,9 +45,21 @@
 						<div class="content">
 							<p> <strong>I'm a programmer</strong> located in Montreal. I love puzzles and problem solving in all it's forms, but my favorites are writting clever code solutions and assembling IKEA furniture.  My hobbies include fiber arts, yoga, caring for cats, and learning new things to be passionate about.</p>
 							<input type="text" name="ravelry_URL" value="project URL">
-							    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython.min.js"> </script>
-    							<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython_stdlib.min.js"> </script>
-    							<script src="main.py" type="text/python" defer></script>
+							<form class="pure-form" onsubmit="return false;">
+                              <fieldset>
+                                <legend>Base64 Calculator</legend>
+                                <input type="text" id="text-src" placeholder="Text to Encode" />
+                                <button
+                                  type="submit" id="submit"
+                                  class="pure-button pure-button-primary"
+                                  autocomplete="off">Ok</button>
+                                <button id="clear-btn" class="pure-button">Clear</button>
+                              </fieldset>
+                            </form>
+                            <div id="b64-display"></div>
+								
+								
+								
 							<p> I'm seeking to advance my career with a variety of opportunities, including:</p>
 							<ul>
 							<li> full time employment </li>
