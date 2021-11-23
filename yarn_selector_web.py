@@ -9,6 +9,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from browser import document, prompt, html, alert
 from browser.local_storage import storage
+import json
 
 
 def getPatternID(pattern_url):
@@ -228,18 +229,45 @@ def prettyPrintYarn(yarn):
     print("Link: " + "https://www.ravelry.com/yarns/library/" + yarn[0]["permalink"])
 
 
-def displayYarn(yarn):
-    """assumes yarn_object is a dict from ravelry's API
-    displays a yarn object on a webpage"""
-    # TODO
+def clear_map(evt):
+    yarn_map.clear()
+    storage["yarndata"] = json.dumps({})
+    document["yarn-display"].clear()
+
+
+def display_map():
+    # TODO edit to show yarns from recommendations
+    if not yarn_map:
+        return
+    table = html.TABLE(Class="pure-table")
+    table <= html.THEAD(html.TR(html.TH("Text") + html.TH("Base64")))
+    table <= (html.TR(html.TD(key) + html.TD(yarn_map[key])) for key in yarn_map)
+    yarn_display = document["yarn-display"]
+    yarn_display.clear()
+    yarn_display <= table
+    document["text-src"].value = ""
+
+
+def yarn_recommend():
+    value = document["text-src"].value
+    if not value:
+        alert("You need to enter a value")
+        return
+    yarn_data = suggestYarn(value)
+    yarn_map[value] = yarn_data
+    storage["yarn_data"] = json.dumps(yarn_map)
+    display_map()
 
 
 if __name__ == "__main__":
-    print("Here are some yarns that I recommend for your project:")
-    print("----------------------------------")
-    for yarn in suggestYarn("https://www.ravelry.com/patterns/library/velvet-cache-cou"):
-        prettyPrintYarn(yarn)
-        print("----------------------------------")
+    # print("Here are some yarns that I recommend for your project:")
+    # print("----------------------------------")
+    # for yarn in suggestYarn("https://www.ravelry.com/patterns/library/velvet-cache-cou"):
+    #     prettyPrintYarn(yarn)
+    #     print("----------------------------------")
+    yarn_map = {}
+    document["submit"].bind("click", yarn_recommend)
+    document["clear-btn"].bind("click", clear_map)
 
 
 yarn_attributes_valid = ['dry-flat', 'hand-wash', 'hand-wash-cold','machine-dry', 'machine-wash', 'superwash', 'barber-pole', 'gradient', 'heathered', 'marled', 'multi-strand-unplied', 'self-patterning', 'self-striping', 'semi-solid', 'solid', 'speckled', 'tonal', 'tweed', 'variegated', 'chain-plied', 'chainette-i-cord', 'coils', 'halo', 'ribbon', 'ruffle', 'slub', 'tape', 'thick-and-thin', 'unspun', 'z-twist', 'beads', 'feathers', 'felt', 'other', 'ribbons', 'sequins', 'boucle', 'chenille', 'eyelash', 'flamme', 'ladder', 'mesh', 'pom-pom', 'sueded', 'single-ply', '2-ply', '3-ply', '4-ply', 'cabled', 'multi-ply-5', 'core-spun', 'semi-woolen-spun', 'semi-worsted-spun', 'woolen-spun', 'worsted-spun', 'fleece-dyed', 'hand-dyed', 'machine-dyed', 'natural-dyes', 'undyed', 'mini-skeins', 'winding-required', 'certified-organic', 'fair-trade', 'recycled', 'conductive', 'mercerized', 'moth-proofed']
