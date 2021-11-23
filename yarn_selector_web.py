@@ -238,6 +238,7 @@ def clear_map(evt):
 def display_map():
     # TODO edit to show yarns from recommendations
     if not yarn_map:
+        alert("no value in yarn_map")
         return
     table = html.TABLE(Class="pure-table")
     table <= html.THEAD(html.TR(html.TH("Text(mod)") + html.TH("Base64(mod)")))
