@@ -240,7 +240,7 @@ def display_map():
     if not yarn_map:
         return
     table = html.TABLE(Class="pure-table")
-    table <= html.THEAD(html.TR(html.TH("Text") + html.TH("Base64")))
+    table <= html.THEAD(html.TR(html.TH("Text(mod)") + html.TH("Base64(mod)")))
     table <= (html.TR(html.TD(key) + html.TD(yarn_map[key])) for key in yarn_map)
     yarn_display = document["yarn-display"]
     yarn_display.clear()
@@ -256,7 +256,7 @@ def yarn_recommend():
     # yarn_data = suggestYarn(value)
     # yarn_map[value] = yarn_data
     # storage["yarn_data"] = json.dumps(yarn_map)
-    yarn_data = str(value)
+    yarn_data = "this value is in a dict"
     yarn_map[value] = yarn_data
     storage["yarn_data"] = json.dumps(yarn_map)
     display_map()
