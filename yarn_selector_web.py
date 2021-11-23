@@ -253,7 +253,10 @@ def yarn_recommend():
     if not value:
         alert("You need to enter a value")
         return
-    yarn_data = suggestYarn(value)
+    # yarn_data = suggestYarn(value)
+    # yarn_map[value] = yarn_data
+    # storage["yarn_data"] = json.dumps(yarn_map)
+    yarn_data = str(value)
     yarn_map[value] = yarn_data
     storage["yarn_data"] = json.dumps(yarn_map)
     display_map()
