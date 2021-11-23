@@ -240,6 +240,8 @@ def display_map():
     if not yarn_map:
         alert("no value in yarn_map")
         return
+    if yarn_map:
+        alert("value in yarn_map")
     table = html.TABLE(Class="pure-table")
     table <= html.THEAD(html.TR(html.TH("Text(mod)") + html.TH("Base64(mod)")))
     table <= (html.TR(html.TD(key) + html.TD(yarn_map[key])) for key in yarn_map)
