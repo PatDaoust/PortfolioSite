@@ -252,6 +252,7 @@ def display_map():
 
 
 def yarn_recommend():
+    alert("yarn_recommend is running")
     value = document["text-src"].value
     if not value:
         alert("You need to enter a value")
