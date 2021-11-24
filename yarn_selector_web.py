@@ -246,7 +246,7 @@ def display_map():
     table <= html.THEAD(html.TR(html.TH("Text(mod)") + html.TH("Base64(mod)")))
     table <= (html.TR(html.TD(key) + html.TD(yarn_map[key])) for key in yarn_map)
     yarn_display = document["yarn-display"]
-    yarn_display.clear()
+    # yarn_display.clear()
     yarn_display <= table
     document["text-src"].value = ""
 
