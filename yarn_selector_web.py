@@ -246,7 +246,7 @@ def display_map():
     table <= html.THEAD(html.TR(html.TH("Text(mod)") + html.TH("Base64(mod)")))
     table <= (html.TR(html.TD(key) + html.TD(yarn_map[key])) for key in yarn_map)
     yarn_display = document["yarn-display"]
-    # yarn_display.clear()
+    yarn_display.clear()
     yarn_display <= table
     document["text-src"].value = ""
 
@@ -266,15 +266,14 @@ def yarn_recommend():
     display_map()
 
 
-if __name__ == "__main__":
-    # print("Here are some yarns that I recommend for your project:")
-    # print("----------------------------------")
-    # for yarn in suggestYarn("https://www.ravelry.com/patterns/library/velvet-cache-cou"):
-    #     prettyPrintYarn(yarn)
-    #     print("----------------------------------")
-    pass
+# if __name__ == "__main__":
+#     print("Here are some yarns that I recommend for your project:")
+#     print("----------------------------------")
+#     for yarn in suggestYarn("https://www.ravelry.com/patterns/library/velvet-cache-cou"):
+#         prettyPrintYarn(yarn)
+#         print("----------------------------------")
 
-yarn_map = {}
+yarn_map = {"hello" : "world"}
 document["submit"].bind("click", yarn_recommend)
 document["clear-btn"].bind("click", clear_map)
 
