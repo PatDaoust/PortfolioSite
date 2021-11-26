@@ -5,7 +5,6 @@ Created on Wed Nov 10 16:40:25 2021
 @author: catal
 """
 
-import yarn_selector_web as ysw
 from browser import document, prompt, html, alert
 from browser.local_storage import storage
 import json, base64
@@ -27,7 +26,6 @@ def base64_compute(evt):
         alert(f"'{value}' already exists: '{b64_map[value]}'")
         return
     b64data = base64.b64encode(value.encode()).decode()
-    # b64data = reverse(value)
     b64_map[value] = b64data
     storage["b64data"] = json.dumps(b64_map)
     display_map()
@@ -37,16 +35,12 @@ def clear_map(evt):
     storage["b64data"] = json.dumps({})
     document["b64-display"].clear()
 
-
-def reverse(a_string):
-    return a_string[::-1]
-
 def display_map():
     if not b64_map:
         return
     table = html.TABLE(Class="pure-table")
-    table <= html.THEAD(html.TR(html.TH("yarn info will display here")))
-    table <= (html.TR(html.TD(key)) for key in b64_map)
+    table <= html.THEAD(html.TR(html.TH("Text") + html.TH("Base64")))
+    table <= (html.TR(html.TD(key) + html.TD(b64_map[key])) for key in b64_map)
     base64_display = document["b64-display"]
     base64_display.clear()
     base64_display <= table
