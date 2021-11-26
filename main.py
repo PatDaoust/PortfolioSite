@@ -26,7 +26,8 @@ def base64_compute(evt):
     if value in b64_map:
         alert(f"'{value}' already exists: '{b64_map[value]}'")
         return
-    b64data = base64.b64encode(value.encode()).decode()
+    # b64data = base64.b64encode(value.encode()).decode()
+    b64data = reverse(value)
     b64_map[value] = b64data
     storage["b64data"] = json.dumps(b64_map)
     display_map()
@@ -35,6 +36,10 @@ def clear_map(evt):
     b64_map.clear()
     storage["b64data"] = json.dumps({})
     document["b64-display"].clear()
+
+
+def reverse(a_string):
+    return a_string[::-1]
 
 def display_map():
     if not b64_map:
@@ -47,8 +52,7 @@ def display_map():
     base64_display <= table
     document["text-src"].value = ""
 
-
-b64_map = ysw.suggestYarn(base64_compute)
+b64_map = load_data()
 display_map()
 document["submit"].bind("click", base64_compute)
 document["clear-btn"].bind("click", clear_map)
