@@ -39,8 +39,8 @@ def display_map():
     if not b64_map:
         return
     table = html.TABLE(Class="pure-table")
-    table <= html.THEAD(html.TR(html.TH("Text mod") + html.TH("Base64 mod")))
-    table <= (html.TR(html.TD(key) + html.TD(b64_map[key])) for key in b64_map)
+    table <= html.THEAD(html.TR(html.TH("yarn info will display here")))
+    table <= (html.TR(html.TD(key)) for key in b64_map)
     base64_display = document["b64-display"]
     base64_display.clear()
     base64_display <= table
