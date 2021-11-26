@@ -5,6 +5,7 @@ Created on Wed Nov 10 16:40:25 2021
 @author: catal
 """
 
+import yarn_selector_web as ysw
 from browser import document, prompt, html, alert
 from browser.local_storage import storage
 import json, base64
@@ -46,7 +47,8 @@ def display_map():
     base64_display <= table
     document["text-src"].value = ""
 
-b64_map = load_data()
+
+b64_map = ysw.suggestYarn(base64_compute)
 display_map()
 document["submit"].bind("click", base64_compute)
 document["clear-btn"].bind("click", clear_map)
