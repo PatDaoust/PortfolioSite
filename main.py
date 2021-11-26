@@ -50,7 +50,7 @@ def display_map():
     base64_display = document["b64-display"]
     base64_display.clear()
     base64_display <= table
-    document["text-src"].value = "replacement value here"
+    document["text-src"].value = ""
 
 b64_map = load_data()
 display_map()
