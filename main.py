@@ -26,8 +26,8 @@ def base64_compute(evt):
     if value in b64_map:
         alert(f"'{value}' already exists: '{b64_map[value]}'")
         return
-    # b64data = base64.b64encode(value.encode()).decode()
-    b64data = reverse(value)
+    b64data = base64.b64encode(value.encode()).decode()
+    # b64data = reverse(value)
     b64_map[value] = b64data
     storage["b64data"] = json.dumps(b64_map)
     display_map()
@@ -50,7 +50,7 @@ def display_map():
     base64_display = document["b64-display"]
     base64_display.clear()
     base64_display <= table
-    document["text-src"].value = ""
+    document["text-src"].value = "replacement value here"
 
 b64_map = load_data()
 display_map()
