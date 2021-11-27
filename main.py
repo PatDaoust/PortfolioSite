@@ -27,7 +27,7 @@ def base64_compute(evt):
         alert(f"'{value}' already exists: '{b64_map[value]}'")
         return
     b64data = base64.b64encode(value.encode()).decode()
-    b64_map[value] = b64data  # TODO undo
+    b64_map[value] = b64data  # TODO undo why is this wrong?
     storage["b64data"] = json.dumps(b64_map)
     display_map()
 
