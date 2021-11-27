@@ -26,7 +26,7 @@ def base64_compute(evt):
         alert(f"'{value}' already exists: '{b64_map[value]}'")
         return
     b64data = base64.b64encode(value.encode()).decode()
-    b64_map[value] = b64data
+    b64_map[value] = "this is manual text"  # TODO undo
     storage["b64data"] = json.dumps(b64_map)
     display_map()
 
