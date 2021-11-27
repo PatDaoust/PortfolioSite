@@ -5,6 +5,7 @@ Created on Wed Nov 10 16:40:25 2021
 @author: catal
 """
 
+import yarn_selector_web as ysw
 from browser import document, prompt, html, alert
 from browser.local_storage import storage
 import json, base64
@@ -26,7 +27,7 @@ def base64_compute(evt):
         alert(f"'{value}' already exists: '{b64_map[value]}'")
         return
     b64data = base64.b64encode(value.encode()).decode()
-    b64_map[value] = "this is manual text"  # TODO undo
+    b64_map[value] = value[::-1]  # TODO undo
     storage["b64data"] = json.dumps(b64_map)
     display_map()
 
