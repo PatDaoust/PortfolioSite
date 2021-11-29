@@ -7,8 +7,8 @@ Created on Sun Aug 15 11:00:56 2021
 
 import requests
 from requests.adapters import HTTPAdapter
-from browser import document, prompt, html, alert
-from browser.local_storage import storage
+# from browser import document, prompt, html, alert
+# from browser.local_storage import storage
 import json
 
 
@@ -273,9 +273,12 @@ def yarn_recommend():
 #         prettyPrintYarn(yarn)
 #         print("----------------------------------")
 
-yarn_map = {"hello" : "world"}
-document["submit"].bind("click", yarn_recommend)
-document["clear-btn"].bind("click", clear_map)
+# yarn_map = {"hello" : "world"}
+# document["submit"].bind("click", yarn_recommend)
+# document["clear-btn"].bind("click", clear_map)
+
+test_value = suggestYarn("https://www.ravelry.com/patterns/library/velvet-cache-cou")
+print(str(test_value)[:50])
 
 
 yarn_attributes_valid = ['dry-flat', 'hand-wash', 'hand-wash-cold','machine-dry', 'machine-wash', 'superwash', 'barber-pole', 'gradient', 'heathered', 'marled', 'multi-strand-unplied', 'self-patterning', 'self-striping', 'semi-solid', 'solid', 'speckled', 'tonal', 'tweed', 'variegated', 'chain-plied', 'chainette-i-cord', 'coils', 'halo', 'ribbon', 'ruffle', 'slub', 'tape', 'thick-and-thin', 'unspun', 'z-twist', 'beads', 'feathers', 'felt', 'other', 'ribbons', 'sequins', 'boucle', 'chenille', 'eyelash', 'flamme', 'ladder', 'mesh', 'pom-pom', 'sueded', 'single-ply', '2-ply', '3-ply', '4-ply', 'cabled', 'multi-ply-5', 'core-spun', 'semi-woolen-spun', 'semi-worsted-spun', 'woolen-spun', 'worsted-spun', 'fleece-dyed', 'hand-dyed', 'machine-dyed', 'natural-dyes', 'undyed', 'mini-skeins', 'winding-required', 'certified-organic', 'fair-trade', 'recycled', 'conductive', 'mercerized', 'moth-proofed']
