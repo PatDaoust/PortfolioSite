@@ -8,6 +8,7 @@ Created on Wed Nov 10 16:40:25 2021
 from browser import document, prompt, html, alert
 from browser.local_storage import storage
 import json, base64
+import yarn_selector_web as ysw
 
 def load_data():
     data = storage.get("b64data")
@@ -25,7 +26,7 @@ def base64_compute(evt):
     if value in b64_map:
         alert(f"'{value}' already exists: '{b64_map[value]}'")
         return
-    b64data = value[::-1]  # TODO modified
+    b64data = str(ysw.suggestYarn(value))  # TODO modified
     b64_map[value] = b64data
     storage["b64data"] = json.dumps(b64_map)
     display_map()
