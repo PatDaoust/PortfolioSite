@@ -34,6 +34,7 @@ def getPatternID(pattern_url):
 
 
 # print(getPatternID("https://www.ravelry.com/patterns/library/velvet-cache-cou"))
+# not a real change
 
 
 def getPattern(pattern_id):
