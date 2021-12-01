@@ -26,7 +26,7 @@ def base64_compute(evt):
     if value in b64_map:
         alert(f"'{value}' already exists: '{b64_map[value]}'")
         return
-    b64data = str(ysw.suggestYarn(value)[:50])  # TODO modified
+    b64data = str(ysw.suggestYarn(value)[:50])  # TODO modified again
     b64_map[value] = b64data
     storage["b64data"] = json.dumps(b64_map)
     display_map()
